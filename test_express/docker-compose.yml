@@ -1,0 +1,23 @@
+version: "2"
+services:
+  web:
+    container_name: "pcloc"
+    image: node
+    #depends_on:
+    #  - mongo
+    #networks:
+    #  - default
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/data/app
+    working_dir: /data/app
+    command: npm install
+    entrypoint: npm start
+  db:
+    container_name: "db"
+    image: mongo
+    expose:
+      - "27017"
+    #networks:
+    #  - default
